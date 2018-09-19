@@ -6,23 +6,15 @@ namespace SingletonPattern
 {
     public class Configuration
     {
-        private static Configuration _instance;
+        private static readonly Lazy<Configuration> _lazyConfig = new Lazy<Configuration>(() => new Configuration());
 
         public int FavoriteNumber { get { return 6; } }
 
-        protected Configuration()
-        {
+        public static Configuration Instance { get { return _lazyConfig.Value; } }
 
-        }
-
-        //not thread safe
-        public static Configuration Instance()
+        private Configuration()
         {
-            if(_instance == null)
-            {
-                _instance = new Configuration();
-            }
-            return _instance;
+            //need this constructor so other classes can't mistakenly write var config = new Configuration();
         }
     }
 }
