@@ -6,12 +6,8 @@ namespace SingletonPattern
     {
         static void Main(string[] args)
         {
-            //Configuration configuration = Configuration.Instance();
-
-            Configuration configuration = null;
-
+            Configuration configuration = Configuration.Instance();
             Console.WriteLine("Favorite number is " + configuration.FavoriteNumber);
-
             Console.ReadKey();
         }
     }
