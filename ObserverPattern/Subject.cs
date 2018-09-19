@@ -20,6 +20,7 @@ namespace ObserverPattern
 
         public void Notify()
         {
+
             foreach(var o in _observers)
             {
                 o.Update();

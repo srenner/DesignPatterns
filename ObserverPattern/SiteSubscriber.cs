@@ -6,17 +6,19 @@ namespace ObserverPattern
 {
     class SiteSubscriber : Observer
     {
-        public string _subscriberName { get; set; }
-        public string MailingListState { get; set; }
+        public string _subscriberName;
+        public MailingList _subject;
 
-        public SiteSubscriber(string name)
+
+        public SiteSubscriber(MailingList subject, string name)
         {
             _subscriberName = name;
+            _subject = subject;
         }
 
         public override void Update()
         {
-            Console.WriteLine("Observer {0} received the new state {1}", this._subscriberName, this.MailingListState);
+            Console.WriteLine("Observer {0} received the new state {1}", _subscriberName, _subject.State);
         }
     }
 }
